@@ -1,0 +1,11 @@
+version: '3'
+services:
+  dynamodb:
+    image: amazon/dynamodb-local
+    expose:
+      - 8000
+    command: ["-jar", "DynamoDBLocal.jar", "-inMemory", "-sharedDb"]
+  web:
+    build: .
+    volumes:
+      - ./app/:/code/app
